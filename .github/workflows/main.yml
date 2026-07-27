@@ -14,10 +14,8 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           aws-region: us-east-2
 
-      - name: sync to s3
+      - name: upload index to s3
         shell: bash
         run: |
-          aws s3 sync ./ s3://test-2707/ \
-          --exclude "*" \
-          --include "index.html"
+          aws s3 cp ./ecomm-2.1/index.html s3://test-2707/index.html
           
